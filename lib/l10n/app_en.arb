@@ -1,0 +1,119 @@
+{
+  "@@locale": "en",
+
+  "onBoardingTitle1": "Welcome to our store!",
+  "onBoardingDesc1": "Discover the best products with great prices.\nYour satisfaction is our priority.",
+
+  "onBoardingTitle2": "Fast & Secure",
+  "onBoardingDesc2": "Enjoy fast delivery and secure payment options.\nShop safely anytime, anywhere.",
+
+  "onBoardingTitle3": "Start Shopping Now",
+  "onBoardingDesc3": "Let's begin your shopping journey with us!\nFind everything you need in one place.",
+
+  "skip": "Skip",
+
+  "loginTitle": "Login",
+  "loginSubtitle": "Welcome back! Please login to your account.",
+  "email": "E-Mail",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "loginButton": "Login",
+  "dontHaveAccount": "Don’t have an account?",
+  "signUpNow": "Sign Up Now",
+  "orSignInWith": "Or sign in with",
+
+  "signupTitle": "Create Account",
+  "signupSubtitle": "Please fill in the information below to get started.",
+  "confirmPassword": "Confirm Password",
+  "haveAccount": "Already have an account?",
+  "signInNow": "Sign In Now",
+  "signUpButton": "Sign Up",
+  "letsCreateYourAccount": "Let's create your account",
+
+  "forgetPasswordTitle": "Forgot Password",
+  "forgetPasswordSubtitle": "Enter your email to receive a password reset link.",
+  "sendLink": "Send Link",
+  "backToLogin": "Back to Login",
+
+  "name": "Name",
+  "username": "Username",
+  "firstName": "First Name",
+  "secondName": "Last Name",
+  "phoneNumber": "Phone Number",
+  "rememberMe": "Remember Me",
+  "iAgreeTo": "I agree to",
+  "privacyPolicy": "Privacy Policy",
+  "and": "and",
+  "termsOfUse": "Terms of Use",
+
+  "home": "Home",
+  "settings": "Settings",
+  "language": "Language",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode" ,
+  "verifyTitle": "Verify Your Email",
+  "verifySubtitle": "We’ve sent a verification link to your email address. Please check your inbox and click the link to verify your account.",
+  "continueText": "Continue",
+  "resendEmail": "Resend Email",
+  "verifySuccessTitle": "Your account has been successfully created!",
+  "verifySuccessSubtitle": "Your account has been successfully created and verified. You can now start exploring our app and enjoy shopping.",
+  "goToHome": "Go to Home",
+  "resetLinkSentTitle": "Check Your Email",
+  "resetLinkSentSubtitle": "A password reset link has been sent to your email address. Please check your inbox and follow the instructions to reset your password.",
+  "goToLogin": "Go to Login" ,
+  "submit" :"submit" , 
+  "done" :"done",
+  "store": "Store",
+  "wishlist": "wishlist",
+  "profile": "profile" ,
+  "gooddayforshopping" :"good day for shopping" ,
+  "mohamedfawzy":"Mohamed Fawzy" ,
+  "popularCategories": "Popular Categories",
+  "search": "Search in Store",
+  "popularProducts": "Popular Products" , 
+  "viewall":"view all", 
+  "featuredbrands" :"featured brands",
+  "account": "Account",
+  "accountSetting": "Account Settings",
+  "accountSettingDesc": "Manage your personal account preferences",
+
+  "myAddress": "My Addresses",
+  "myAddressDesc": "Manage and edit saved delivery locations",
+
+  "myCart": "My Cart",
+  "myCartDesc": "View and update products before checkout",
+
+  "myOrders": "My Orders",
+  "myOrdersDesc": "Track and review all your previous orders",
+
+  "bankAccount": "Bank Account",
+  "bankAccountDesc": "Manage your payment and bank details",
+
+  "myCoupons": "My Coupons",
+  "myCouponsDesc": "Check and redeem your available discount coupons",
+
+  "notification": "Notifications",
+  "notificationDesc": "View the latest updates and alerts",
+
+  "accountPrivacy": "Account Privacy",
+  "accountPrivacyDesc": "Control who can access your personal data",
+
+  "appSetting": "App Settings",
+  "appSettingDesc": "Customize the look and behavior of the app",
+
+  "loadData": "Load Data",
+  "loadDataDesc": "Refresh or reload all application data",
+
+  "geoLocation": "Geolocation",
+  "geoLocationDesc": "Allow app to detect your location automatically",
+
+  "safeMode": "Safe Mode",
+  "safeModeDesc": "Enable extra protection and safety features",
+
+  "hdImageQuality": "HD Image Quality",
+  "hdImageQualityDesc": "Enable or disable high-quality images" , 
+  "logout":"Logout" ,
+  "logoutDesc": "Are you sure you want to logout?",
+  "cancel": "Cancel" , 
+  "confirm" :"Confirm"
+  }

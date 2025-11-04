@@ -1,0 +1,118 @@
+{
+  "@@locale": "ar",
+
+  "onBoardingTitle1": "مرحبًا بك في متجرنا!",
+  "onBoardingDesc1": "اكتشف أفضل المنتجات بأفضل الأسعار.\nرضاك هو أولويتنا دائمًا.",
+
+  "onBoardingTitle2": "سريع وآمن",
+  "onBoardingDesc2": "استمتع بتوصيل سريع وخيارات دفع آمنة.\nتسوّق بثقة في أي وقت ومن أي مكان.",
+
+  "onBoardingTitle3": "ابدأ التسوق الآن",
+  "onBoardingDesc3": "لنبدأ رحلتك في التسوق معنا!\nستجد كل ما تحتاجه في مكان واحد.",
+
+  "skip": "تخطي",
+
+  "loginTitle": "تسجيل الدخول",
+  "loginSubtitle": "مرحبًا بعودتك! من فضلك قم بتسجيل الدخول إلى حسابك.",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "loginButton": "تسجيل الدخول",
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "signUpNow": "أنشئ حسابًا الآن",
+  "orSignInWith": "أو سجل الدخول باستخدام",
+
+  "signupTitle": "إنشاء حساب",
+  "signupSubtitle": "يرجى إدخال البيانات التالية للبدء.",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "haveAccount": "هل لديك حساب بالفعل؟",
+  "signInNow": "سجّل الدخول الآن",
+  "signUpButton": "إنشاء حساب",
+  "letsCreateYourAccount": "لننشئ حسابك الجديد",
+
+  "forgetPasswordTitle": "نسيت كلمة المرور",
+  "forgetPasswordSubtitle": "أدخل بريدك الإلكتروني لتصلك رسالة لإعادة تعيين كلمة المرور.",
+  "sendLink": "إرسال الرابط",
+  "backToLogin": "العودة لتسجيل الدخول",
+
+  "name": "الاسم",
+  "username": "اسم المستخدم",
+  "firstName": "الاسم الأول",
+  "secondName": "الاسم الثاني",
+  "phoneNumber": "رقم الهاتف",
+  "rememberMe": "تذكرني",
+  "iAgreeTo": "أوافق على",
+  "privacyPolicy": "سياسة الخصوصية",
+  "and": "و",
+  "termsOfUse": "شروط الاستخدام",
+  "home": "الرئيسية",
+  "settings": "الإعدادات",
+  "language": "اللغة",
+  "darkMode": "الوضع الداكن",
+  "lightMode": "الوضع الفاتح" , 
+  "verifyTitle": "تأكيد البريد الإلكتروني",
+  "verifySubtitle": "لقد أرسلنا رابط التحقق إلى بريدك الإلكتروني. من فضلك تحقق من صندوق الوارد واضغط على الرابط لتفعيل حسابك.",
+  "continueText": "متابعة",
+  "resendEmail": "إعادة إرسال البريد",
+  "verifySuccessTitle": "تم تأكيد البريد الإلكتروني بنجاح!",
+  "verifySuccessSubtitle": "تم التحقق من بريدك الإلكتروني بنجاح. يمكنك الآن الاستمرار واستكشاف التطبيق.",
+  "goToHome": "الذهاب إلى الرئيسية", 
+  "resetLinkSentTitle": "تحقق من بريدك الإلكتروني",
+  "resetLinkSentSubtitle": "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من صندوق الوارد واتباع التعليمات لإعادة تعيين كلمة المرور الخاصة بك",
+  "goToLogin": "الذهاب لتسجيل الدخول",
+  "submit" :"submit" , 
+  "done" : "تم",
+  "store": "المتجر",
+  "wishlist": "المفضلة",
+  "profile": "الملف الشخصي" ,
+  "gooddayforshopping" :"يوم جيد للتسوق", 
+  "mohamedfawzy":"محمد فوزي",
+  "popularCategories": "الفئات الشائعة",
+  "search": "ابحث في المتجر",
+  "popularProducts": "المنتجات الشائعة" ,
+  "viewall":"عرض الكل" ,
+  "featuredbrands" :"العلامات التجارية المميزة" ,
+  "account": "الحساب",
+  "accountSetting": "إعدادات الحساب",
+  "accountSettingDesc": "إدارة تفضيلات حسابك الشخصية",
+
+  "myAddress": "عناويني",
+  "myAddressDesc": "إدارة وتعديل مواقع التوصيل المحفوظة",
+
+  "myCart": "سلة المشتريات",
+  "myCartDesc": "عرض وتعديل المنتجات قبل الشراء",
+
+  "myOrders": "طلباتي",
+  "myOrdersDesc": "تتبع ومراجعة جميع الطلبات السابقة",
+
+  "bankAccount": "الحساب البنكي",
+  "bankAccountDesc": "إدارة بيانات الدفع والحساب البنكي",
+
+  "myCoupons": "كوبوناتي",
+  "myCouponsDesc": "عرض واستخدام الكوبونات المتاحة",
+
+  "notification": "الإشعارات",
+  "notificationDesc": "عرض آخر التنبيهات والتحديثات",
+
+  "accountPrivacy": "خصوصية الحساب",
+  "accountPrivacyDesc": "التحكم في إعدادات الخصوصية الخاصة بك",
+
+  "appSetting": "إعدادات التطبيق",
+  "appSettingDesc": "تخصيص إعدادات ومظهر التطبيق",
+
+  "loadData": "تحميل البيانات",
+  "loadDataDesc": "تحديث أو إعادة تحميل بيانات التطبيق",
+
+  "geoLocation": "الموقع الجغرافي",
+  "geoLocationDesc": "السماح للتطبيق بتحديد موقعك تلقائيًا",
+
+  "safeMode": "الوضع الآمن",
+  "safeModeDesc": "تفعيل الحماية الإضافية أثناء الاستخدام",
+
+  "hdImageQuality": "جودة الصور العالية",
+  "hdImageQualityDesc": "تشغيل أو إيقاف عرض الصور عالية الجودة" ,
+  "logout":"تسجيل الخروج" ,
+  "logoutDesc": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "cancel": "إلغاء" ,
+  "confirm" :"تاكيد"
+}
