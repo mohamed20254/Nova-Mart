@@ -17,7 +17,11 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, AppRouting.prudicdetils);
+        Navigator.pushNamed(
+          context,
+          AppRouting.prudicdetils,
+          arguments: product,
+        );
       },
       child: Card(
         color: AppTheme.isdark(context) ? Colors.white24 : Colors.white,

@@ -1,6 +1,7 @@
 import 'package:ecomerc_app_with_admin/core/di/injection_container.dart';
 import 'package:ecomerc_app_with_admin/core/local_storage/first_time.dart';
 import 'package:ecomerc_app_with_admin/features/Home/data/model/product_model.dart';
+import 'package:ecomerc_app_with_admin/features/Home/domain/entity/product_entity.dart';
 import 'package:ecomerc_app_with_admin/features/Home/presentation/bloc/cubit/category_cubit.dart';
 import 'package:ecomerc_app_with_admin/features/Home/presentation/bloc/prudic_cubit/product_cubit.dart';
 import 'package:ecomerc_app_with_admin/features/Home/presentation/screen/home_scrren.dart';
@@ -121,7 +122,7 @@ class AppRouting {
         );
       case prudicdetils:
         {
-          final arg = setting.arguments as ProductModel;
+          final arg = setting.arguments as ProductEntity;
           return MaterialPageRoute(
             builder: (context) => PrudicDetilsScreen(data: arg),
           );

@@ -9,6 +9,7 @@ class BotomAddCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ValueNotifier<int> valueNotifier = ValueNotifier(0);
     return Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -17,11 +18,30 @@ class BotomAddCart extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(width: AppSize.spacewWidth1(context)),
-          _buildAddandminus(context, icon: Icons.remove, ontap: () {}),
+          _buildAddandminus(
+            context,
+            icon: Icons.remove,
+            ontap: () {
+              if (valueNotifier.value != 0) {
+                valueNotifier.value--;
+              }
+            },
+          ),
           SizedBox(width: AppSize.spacewWidth2(context)),
-          Text("1"),
+          ValueListenableBuilder(
+            valueListenable: valueNotifier,
+            builder: (context, value, child) {
+              return Text(value.toString());
+            },
+          ),
           SizedBox(width: AppSize.spacewWidth2(context)),
-          _buildAddandminus(context, icon: Icons.add, ontap: () {}),
+          _buildAddandminus(
+            context,
+            icon: Icons.add,
+            ontap: () {
+              valueNotifier.value++;
+            },
+          ),
           Spacer(),
           Container(
             height: 38.h,
