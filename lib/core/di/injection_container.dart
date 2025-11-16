@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecomerc_app_with_admin/features/Home/di.dart';
 import 'package:ecomerc_app_with_admin/features/auth/auth_injection.dart';
 import 'package:ecomerc_app_with_admin/features/auth/domain/usecase/listen_auth_state_usecase.dart';
+import 'package:ecomerc_app_with_admin/features/wishlist/di.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -17,5 +18,6 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthStateChange>(
     () => AuthStateChange(listen: sl<ListenAuthStateUsecase>()),
   );
+  await injectFav(sl);
   await diPrudict(sl);
 }

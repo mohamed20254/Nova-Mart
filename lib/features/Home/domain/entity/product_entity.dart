@@ -26,4 +26,37 @@ class ProductEntity {
     required this.images,
     required this.rating,
   });
+  factory ProductEntity.fromjson(Map<String, dynamic> json) {
+    return ProductEntity(
+      id: json["id"] ?? 0,
+      title: json["title"] ?? "",
+      description: json["description"] ?? "",
+      price: json["pric"] ?? 0.0,
+      discountPercentage: json["discountPercentage"] ?? 0.0,
+      categoryid: json["categoryid"] ?? "",
+      brand: json["brand"] ?? "",
+      color: json["color"] ?? [],
+      sizes: json["sizes"] ?? [],
+      stock: json["stock"] ?? 0,
+      images: json["images"] ?? [],
+      rating: json["rating"] ?? 0.0,
+    );
+  }
+  Map<String, dynamic> tojson() {
+    return {
+      "id": id,
+      "title": title,
+      "description": description,
+      "pric": price,
+      "discountPercentage": discountPercentage,
+
+      "categoryid": categoryid,
+      "brand": brand,
+      "color": color,
+      "sizes": sizes,
+      "stock": stock,
+      "images": images,
+      "rating": rating,
+    };
+  }
 }

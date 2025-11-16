@@ -202,7 +202,11 @@ class PrudicDetilsScreen extends StatelessWidget {
                   },
                 ),
               ),
-              Positioned(top: 5, right: 10, child: CustomIconFavorite()),
+              Positioned(
+                top: 5,
+                right: 10,
+                child: CustomIconFavorite(prudict: data),
+              ),
               Positioned(
                 top: 5,
                 left: 5,
