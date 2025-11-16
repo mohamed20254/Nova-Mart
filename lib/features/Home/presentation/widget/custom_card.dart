@@ -17,7 +17,11 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, AppRouting.prudicdetils);
+        Navigator.pushNamed(
+          context,
+          AppRouting.prudicdetils,
+          arguments: product,
+        );
       },
       child: Card(
         color: AppTheme.isdark(context) ? Colors.white24 : Colors.white,
@@ -39,7 +43,7 @@ class CustomCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("${product.price.toStringAsFixed(2)} "),
+          Text("  ${product.price.toStringAsFixed(2)} "),
           Container(
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
@@ -105,7 +109,11 @@ class CustomCard extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(top: 5, right: 5, child: CustomIconFavorite()),
+        Positioned(
+          top: 5,
+          right: 5,
+          child: CustomIconFavorite(prudict: product),
+        ),
         Positioned(
           top: 5,
           left: 10,

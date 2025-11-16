@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecomerc_app_with_admin/core/constant/app_lottie.dart';
 import 'package:ecomerc_app_with_admin/core/responsive/app_size.dart';
 import 'package:ecomerc_app_with_admin/core/theme/widget/app_widget.dart';
@@ -140,12 +139,12 @@ class _HomeScrrenState extends State<HomeScrren> {
                 return SizedBox();
               },
             ),
-            true
-                ? Align(
-                    alignment: Alignment.bottomCenter,
-                    child: CircularProgressIndicator(),
-                  )
-                : SizedBox(),
+            // true
+            //     ? Align(
+            //         alignment: Alignment.bottomCenter,
+            //         child: CircularProgressIndicator(),
+            //       )
+            //     : SizedBox(),
           ],
         ),
       ),
@@ -158,6 +157,7 @@ class _HomeScrrenState extends State<HomeScrren> {
         child: BlocBuilder<CategoryCubit, CategoryState>(
           builder: (context, state) {
             if (state is CategoryFailure) {
+              print(state.messige);
               AppWidget.showsnackbar(context, state.messige);
               return Icon(Icons.error);
             } else if (state is CategoryLoding) {

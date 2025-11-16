@@ -47,12 +47,16 @@ class ProductRemotDataSourcesImpl extends ProductRemotDataSources {
     required int limit,
     required int lastId,
   }) async {
-    final query = _firestore.collection("products").orderBy("id").limit(limit);
-    if (lastId == 0) {
-      query.startAfter([lastId]);
-    }
+    final query = _firestore
+        .collection("products")
+        .orderBy("id")
+        .limit(limit)
+        .startAfter([lastId]);
 
     final snapshot = await query.get();
+    if (snapshot.docs.isEmpty) {
+      return <ProductModel>[];
+    }
     return snapshot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
   }
 }

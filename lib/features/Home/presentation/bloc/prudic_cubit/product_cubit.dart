@@ -35,7 +35,7 @@ class ProductCubit extends Cubit<ProductState> {
         islodingloadMore = false;
       } else {
         products.addAll(newproduct);
-        lastId = products.last.id;
+        lastId = newproduct.last.id;
         islodingloadMore = false;
         emit(ProductSuccessState(products: List.from(products)));
       }
