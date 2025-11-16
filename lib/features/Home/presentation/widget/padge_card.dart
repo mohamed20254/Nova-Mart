@@ -1,5 +1,8 @@
+import 'package:ecomerc_app_with_admin/core/routing/app_routing.dart';
 import 'package:ecomerc_app_with_admin/core/theme/app_theme.dart';
+import 'package:ecomerc_app_with_admin/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -8,10 +11,18 @@ class PadgeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int lenth = 0;
+    final state = context.watch<CartCubit>().state;
+    if (state is CartLoaded) {
+      lenth = state.data.length;
+    }
     return Stack(
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, AppRouting.cartscreen);
+            context.read<CartCubit>().getcart();
+          },
           icon: Icon(
             Iconsax.shopping_bag_copy,
             size: 22.w,
@@ -30,7 +41,7 @@ class PadgeCard extends StatelessWidget {
               color: Colors.black,
             ),
             child: Text(
-              "1",
+              lenth.toString(),
               style: Theme.of(
                 context,
               ).textTheme.labelMedium!.copyWith(color: Colors.white),

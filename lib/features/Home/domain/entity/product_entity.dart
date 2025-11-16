@@ -31,7 +31,7 @@ class ProductEntity {
       id: json["id"] ?? 0,
       title: json["title"] ?? "",
       description: json["description"] ?? "",
-      price: json["pric"] ?? 0.0,
+      price: json["price"] ?? 0.0,
       discountPercentage: json["discountPercentage"] ?? 0.0,
       categoryid: json["categoryid"] ?? "",
       brand: json["brand"] ?? "",
@@ -47,7 +47,7 @@ class ProductEntity {
       "id": id,
       "title": title,
       "description": description,
-      "pric": price,
+      "price": price,
       "discountPercentage": discountPercentage,
 
       "categoryid": categoryid,

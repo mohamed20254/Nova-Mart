@@ -18,7 +18,7 @@ class PrudicDetilsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BotomAddCart(),
+      bottomNavigationBar: BotomAddCart(product: data),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
