@@ -1,6 +1,5 @@
 import 'package:ecomerc_app_with_admin/core/di/injection_container.dart';
 import 'package:ecomerc_app_with_admin/core/local_storage/first_time.dart';
-import 'package:ecomerc_app_with_admin/features/Home/data/model/product_model.dart';
 import 'package:ecomerc_app_with_admin/features/Home/domain/entity/product_entity.dart';
 import 'package:ecomerc_app_with_admin/features/Home/presentation/bloc/cubit/category_cubit.dart';
 import 'package:ecomerc_app_with_admin/features/Home/presentation/bloc/prudic_cubit/product_cubit.dart';
@@ -15,6 +14,7 @@ import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/reset_p
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/sign_up.dart';
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verfication_sucsess.dart';
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verification_email.dart';
+import 'package:ecomerc_app_with_admin/features/cart/presentation/screen/cart_screen.dart';
 import 'package:ecomerc_app_with_admin/features/onboarding/presentation/onbording_screen.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/edite_profile_information_screen.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/profile_screen.dart';
@@ -39,6 +39,7 @@ class AppRouting {
   static const String profileScren = "/profilescreen";
   static const String prudicdetils = "/prudictdetils";
   static const String editeprofile = "/editeprofileinformationscreen";
+  static const String cartscreen = "CartScreen";
   static Route<dynamic>? ongenerating(RouteSettings setting) {
     switch (setting.name) {
       case "/":
@@ -127,6 +128,8 @@ class AppRouting {
             builder: (context) => PrudicDetilsScreen(data: arg),
           );
         }
+      case cartscreen:
+        return MaterialPageRoute(builder: (context) => CartScreen());
       default:
         return MaterialPageRoute(builder: (context) => DefaultScreen());
     }
