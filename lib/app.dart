@@ -43,15 +43,16 @@ class _MyAppState extends State<MyApp> {
                   supportedLocales: AppLocalizations.supportedLocales,
                   onGenerateRoute: AppRouting.ongenerating,
                   debugShowCheckedModeBanner: false,
-                  themeMode: thememode,
+                  themeMode: thememode, 
+                  
                   theme: AppTheme.lightTheme,
                   darkTheme: AppTheme.darkTheme,
                   title: "Ecommerc_App",
                 ),
               );
             },
-          );
-        },
+          ); 
+        },  
       ),
     );
   }

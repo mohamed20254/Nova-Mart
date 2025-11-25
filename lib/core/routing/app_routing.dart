@@ -15,6 +15,7 @@ import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/sign_up
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verfication_sucsess.dart';
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verification_email.dart';
 import 'package:ecomerc_app_with_admin/features/cart/presentation/screen/cart_screen.dart';
+import 'package:ecomerc_app_with_admin/features/checkout/presentation/screen/checkout_mian_screen.dart';
 import 'package:ecomerc_app_with_admin/features/onboarding/presentation/onbording_screen.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/edite_profile_information_screen.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/profile_screen.dart';
@@ -40,98 +41,132 @@ class AppRouting {
   static const String prudicdetils = "/prudictdetils";
   static const String editeprofile = "/editeprofileinformationscreen";
   static const String cartscreen = "CartScreen";
-  static Route<dynamic>? ongenerating(RouteSettings setting) {
+  static const String checkout = "maincheckout";
+  static Route<dynamic>? ongenerating(final RouteSettings setting) {
     switch (setting.name) {
       case "/":
         {
           final user = FirebaseAuth.instance.currentUser;
           return MaterialPageRoute(
-            builder: (context) => IsFirstTime.getFirstTime()
-                ? OnbordingScreen()
+            builder: (final context) => IsFirstTime.getFirstTime()
+                ? const OnbordingScreen()
                 : user != null && user.emailVerified
                 ? MultiBlocProvider(
                     providers: [
                       BlocProvider(
-                        create: (context) => sl<UserCubit>()..getUser(),
+                        create: (final context) => sl<UserCubit>()..getUser(),
                       ),
-                      BlocProvider(create: (context) => sl<CategoryCubit>()),
                       BlocProvider(
-                        create: (context) => sl<ProductCubit>()..getProduct(),
+                        create: (final context) => sl<CategoryCubit>(),
+                      ),
+                      BlocProvider(
+                        create: (final context) =>
+                            sl<ProductCubit>()..getProduct(),
                       ),
                     ],
-                    child: MainScreeen(),
+                    child: const MainScreeen(),
                   )
-                : LoginScreen(),
+                : const LoginScreen(),
           );
         }
       case onbording:
-        return MaterialPageRoute(builder: (context) => OnbordingScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const OnbordingScreen(),
+        );
       case login:
-        return MaterialPageRoute(builder: (context) => LoginScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const LoginScreen(),
+        );
       case signUp:
-        return MaterialPageRoute(builder: (context) => SignUpScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const SignUpScreen(),
+        );
       case forrgetpass:
-        return MaterialPageRoute(builder: (context) => ForgetPassword());
+        return MaterialPageRoute(
+          builder: (final context) => const ForgetPassword(),
+        );
       case verfivation:
         {
           final args = setting.arguments as String;
 
           return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-              create: (context) => TimerCubit(),
+            builder: (final context) => BlocProvider(
+              create: (final context) => TimerCubit(),
               child: VerificationEmail(email: args),
             ),
           );
         }
       case verficationsucess:
-        return MaterialPageRoute(builder: (context) => VerficationSucsess());
+        return MaterialPageRoute(
+          builder: (final context) => const VerficationSucsess(),
+        );
       case resetpassdone:
         {
           final arg = setting.arguments as String;
           return MaterialPageRoute(
-            builder: (context) => ResetPassDone(email: arg),
+            builder: (final context) => ResetPassDone(email: arg),
           );
         }
 
       case mainScreen:
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
+          builder: (final context) => MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => sl<UserCubit>()..getUser()),
-              BlocProvider(create: (context) => sl<CategoryCubit>()),
               BlocProvider(
-                create: (context) => sl<ProductCubit>()..getProduct(),
+                create: (final context) => sl<UserCubit>()..getUser(),
+              ),
+              BlocProvider(create: (final context) => sl<CategoryCubit>()),
+              BlocProvider(
+                create: (final context) => sl<ProductCubit>()..getProduct(),
               ),
             ],
-            child: MainScreeen(),
+            child: const MainScreeen(),
           ),
         );
       case homeScreen:
-        return MaterialPageRoute(builder: (context) => HomeScrren());
+        return MaterialPageRoute(
+          builder: (final context) => const HomeScrren(),
+        );
       case storeScreen:
-        return MaterialPageRoute(builder: (context) => StoreScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const StoreScreen(),
+        );
       case wishListScreen:
-        return MaterialPageRoute(builder: (context) => WishlistScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const WishlistScreen(),
+        );
       case profileScren:
-        return MaterialPageRoute(builder: (context) => ProfileScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const ProfileScreen(),
+        );
       case editeprofile:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => sl<UserCubit>()..getUser(),
-            child: EditeProfileInformationScreen(),
+          builder: (final context) => BlocProvider(
+            create: (final context) => sl<UserCubit>()..getUser(),
+            child: const EditeProfileInformationScreen(),
           ),
         );
       case prudicdetils:
         {
           final arg = setting.arguments as ProductEntity;
           return MaterialPageRoute(
-            builder: (context) => PrudicDetilsScreen(data: arg),
+            builder: (final context) => PrudicDetilsScreen(data: arg),
           );
         }
       case cartscreen:
-        return MaterialPageRoute(builder: (context) => CartScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const CartScreen(),
+        );
+      case checkout:
+        {
+          return MaterialPageRoute(
+            builder: (final context) => const CheckoutMianScreen(),
+          );
+        }
       default:
-        return MaterialPageRoute(builder: (context) => DefaultScreen());
+        return MaterialPageRoute(
+          builder: (final context) => const DefaultScreen(),
+        );
     }
   }
 }
@@ -140,7 +175,7 @@ class DefaultScreen extends StatelessWidget {
   const DefaultScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return const Column(children: [Center(child: Text("NoRouting"))]);
   }
 }

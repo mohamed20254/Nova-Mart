@@ -11,10 +11,9 @@ import 'package:ecomerc_app_with_admin/features/Home/domain/entity/product_entit
 import 'package:ecomerc_app_with_admin/features/Home/domain/repo/product_reposatory.dart';
 
 class ProdictReposatoryImpll implements ProductReposatory {
+  ProdictReposatoryImpll({required this.local, required this.remote});
   final PrudicLocalDataSources local;
   final ProductRemotDataSources remote;
-
-  ProdictReposatoryImpll({required this.local, required this.remote});
 
   // =======================Fatch Category Local or remote With Ubdate
   @override
@@ -53,8 +52,8 @@ class ProdictReposatoryImpll implements ProductReposatory {
 
   @override
   Future<Either<Failure, List<ProductEntity>>> getallProduct({
-    required int limit,
-    required int lastId,
+    required final int limit,
+    required final int lastId,
   }) async {
     try {
       final data = await remote.getProduct(lastId: lastId, limit: limit);

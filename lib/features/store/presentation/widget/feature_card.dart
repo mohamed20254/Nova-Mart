@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,7 +7,9 @@ import '../../../../core/responsive/app_size.dart';
 import '../../../../core/theme/app_theme.dart';
 
 class FeaturedCard extends StatelessWidget {
-  const FeaturedCard({super.key});
+  final String brand;
+  final String counts;
+  const FeaturedCard({super.key, required this.brand, required this.counts});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class FeaturedCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.schedule_send),
+          Icon(Icons.store),
           SizedBox(width: AppSize.spacewWidth3(context)),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +33,7 @@ class FeaturedCard extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Nike",
+                    brand,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: AppTheme.isdark(context)
                           ? Colors.white
@@ -43,7 +46,7 @@ class FeaturedCard extends StatelessWidget {
                 ],
               ),
               Text(
-                "265 prudicts",
+                "$counts prudicts",
                 style: Theme.of(context).textTheme.labelLarge,
                 overflow: TextOverflow.ellipsis,
               ),
