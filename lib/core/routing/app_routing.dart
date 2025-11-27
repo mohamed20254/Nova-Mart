@@ -42,6 +42,7 @@ class AppRouting {
   static const String editeprofile = "/editeprofileinformationscreen";
   static const String cartscreen = "CartScreen";
   static const String checkout = "maincheckout";
+
   static Route<dynamic>? ongenerating(final RouteSettings setting) {
     switch (setting.name) {
       case "/":
@@ -163,6 +164,7 @@ class AppRouting {
             builder: (final context) => const CheckoutMianScreen(),
           );
         }
+
       default:
         return MaterialPageRoute(
           builder: (final context) => const DefaultScreen(),

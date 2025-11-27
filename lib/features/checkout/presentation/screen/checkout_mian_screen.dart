@@ -18,10 +18,10 @@ class _CheckoutMianScreenState extends State<CheckoutMianScreen> {
       appBar: ceckOutAppbar(context),
       body: Column(
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           buildHeader(context),
-          SizedBox(height: 10),
-          ShippingScreen(),
+          const SizedBox(height: 10),
+          const Expanded(child: ShippingScreen()),
         ],
       ),
     );

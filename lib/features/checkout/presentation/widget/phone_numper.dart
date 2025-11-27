@@ -5,7 +5,7 @@ class PhoneNumper extends StatelessWidget {
   const PhoneNumper({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,17 +23,17 @@ class PhoneNumper extends StatelessWidget {
             style: Theme.of(context).textTheme.bodySmall,
             decoration: InputDecoration(
               counterText: '',
-              fillColor: Color(0xFFE7E3E3).withValues(alpha: 0.4),
+              fillColor: const Color(0xFFE7E3E3).withValues(alpha: 0.4),
               filled: true,
               isDense: true,
-              contentPadding: EdgeInsets.all(0),
+              contentPadding: const EdgeInsets.all(0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
             ),
             initialCountryCode: 'EG',
-            onChanged: (phone) {
+            onChanged: (final phone) {
               print(phone.completeNumber); // +20xxxxxxxxx
             },
           ),
