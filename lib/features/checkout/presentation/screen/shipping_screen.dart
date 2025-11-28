@@ -1,3 +1,4 @@
+import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/checkout_buttom.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/dropdown_texfiled.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/phone_numper.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/shipping_textfiled.dart';
@@ -14,7 +15,6 @@ class ShippingScreen extends StatefulWidget {
 class _ShippingScreenState extends State<ShippingScreen> {
   @override
   Widget build(final BuildContext context) {
-    final bool isdark = Theme.of(context).brightness == Brightness.dark;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -44,28 +44,7 @@ class _ShippingScreenState extends State<ShippingScreen> {
             hint: "Enter postal code",
           ),
           const SizedBox(height: 60),
-          SizedBox(
-            height: 47,
-            width: 272,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shadowColor: isdark ? Colors.white : Colors.black,
-                elevation: 2,
-
-                backgroundColor: isdark ? Colors.white : Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(18),
-                ),
-              ),
-              onPressed: () {},
-              child: Text(
-                AppLocalizations.of(context)!.confirm,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall!.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
+          CheckoutButtom(text: AppLocalizations.of(context)!.confirm),
         ],
       ),
     );

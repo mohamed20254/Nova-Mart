@@ -1,3 +1,5 @@
+import 'package:ecomerc_app_with_admin/core/constant/string.dart';
+import 'package:ecomerc_app_with_admin/features/checkout/presentation/screen/payment_screen.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/screen/shipping_screen.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/checkot_appbar.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +23,14 @@ class _CheckoutMianScreenState extends State<CheckoutMianScreen> {
           const SizedBox(height: 10),
           buildHeader(context),
           const SizedBox(height: 10),
-          const Expanded(child: ShippingScreen()),
+          // const Expanded(child: ShippingScreen()),
+          const PaymentScreen(),
         ],
       ),
     );
   }
 
-  Center buildHeader(BuildContext context) {
+  Center buildHeader(final BuildContext context) {
     return Center(
       child: SizedBox(
         height: 40,
@@ -50,7 +53,7 @@ class _CheckoutMianScreenState extends State<CheckoutMianScreen> {
   }
 
   Column customcolumn(
-    BuildContext context, {
+    final BuildContext context, {
     required final String text,
     required final IconData icon,
   }) {
