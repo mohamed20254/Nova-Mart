@@ -17,6 +17,7 @@ import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verific
 import 'package:ecomerc_app_with_admin/features/cart/presentation/screen/cart_screen.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/screen/checkout_mian_screen.dart';
 import 'package:ecomerc_app_with_admin/features/onboarding/presentation/onbording_screen.dart';
+import 'package:ecomerc_app_with_admin/features/orders/data/model/order_model.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/edite_profile_information_screen.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/profile_screen.dart';
 import 'package:ecomerc_app_with_admin/features/store/presentation/screen/store_screen.dart';
@@ -160,9 +161,12 @@ class AppRouting {
         );
       case checkout:
         {
-          return MaterialPageRoute(
-            builder: (final context) => const CheckoutMianScreen(),
-          );
+          {
+            final arg = setting.arguments as List<OrderItem>;
+            return MaterialPageRoute(
+              builder: (final context) => CheckoutMianScreen(orders: arg),
+            );
+          }
         }
 
       default:

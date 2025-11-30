@@ -7,6 +7,7 @@ import 'package:ecomerc_app_with_admin/features/wishlist/presentation/bloc/favor
 import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:ecomerc_app_with_admin/core/localization/localization_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widget_previews.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -43,16 +44,16 @@ class _MyAppState extends State<MyApp> {
                   supportedLocales: AppLocalizations.supportedLocales,
                   onGenerateRoute: AppRouting.ongenerating,
                   debugShowCheckedModeBanner: false,
-                  themeMode: thememode, 
-                  
+                  themeMode: thememode,
+
                   theme: AppTheme.lightTheme,
                   darkTheme: AppTheme.darkTheme,
                   title: "Ecommerc_App",
                 ),
               );
             },
-          ); 
-        },  
+          );
+        },
       ),
     );
   }

@@ -6,7 +6,8 @@ import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class ShippingScreen extends StatefulWidget {
-  const ShippingScreen({super.key});
+  const ShippingScreen({super.key, required this.onnext});
+  final Function(int) onnext;
 
   @override
   State<ShippingScreen> createState() => _ShippingScreenState();
@@ -44,7 +45,13 @@ class _ShippingScreenState extends State<ShippingScreen> {
             hint: "Enter postal code",
           ),
           const SizedBox(height: 60),
-          CheckoutButtom(text: AppLocalizations.of(context)!.confirm),
+          CheckoutButtom(
+            text: AppLocalizations.of(context)!.confirm,
+            ontap: () {
+              print("1212121211221212");
+              widget.onnext(1);
+            },
+          ),
         ],
       ),
     );

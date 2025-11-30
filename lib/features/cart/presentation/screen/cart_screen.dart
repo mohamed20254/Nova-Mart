@@ -1,7 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:ecomerc_app_with_admin/core/routing/app_routing.dart';
 import 'package:ecomerc_app_with_admin/core/theme/app_theme.dart';
 import 'package:ecomerc_app_with_admin/features/cart/domain/entity/cart_entity.dart';
 import 'package:ecomerc_app_with_admin/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:ecomerc_app_with_admin/features/orders/data/model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +45,25 @@ class CartScreen extends StatelessWidget {
                         backgroundColor: Theme.of(context).primaryColor,
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, AppRouting.checkout);
+                        final List<OrderItem> orders = state.data
+                            .map(
+                              (final e) => OrderItem(
+                                productId: e.product.id.toString(),
+                                productName: e.product.title,
+                                quantity: e.quantity,
+                                price: e.product.price,
+                                finalPrice: e.totalPrice,
+                                image: e.product.images.isNotEmpty
+                                    ? e.product.images.first
+                                    : '',
+                              ),
+                            )
+                            .toList();
+                        Navigator.pushNamed(
+                          context,
+                          AppRouting.checkout,
+                          arguments: orders,
+                        );
                       },
                       child: Text(
                         "checkout",

@@ -25,7 +25,7 @@ class CheckoutButtom extends StatelessWidget {
               borderRadius: BorderRadiusGeometry.circular(18),
             ),
           ),
-          onPressed: () {},
+          onPressed: ontap,
           child: Text(
             AppLocalizations.of(context)!.confirm,
             style: Theme.of(

@@ -22,6 +22,5 @@ void main() async {
   runApp(const MyApp());
   // FirebaseAuth.instance.userChanges().listen((event) => print(event!.email.toString()) );
   await FirebaseAuth.instance.setLanguageCode("en");
-
   // print("$user ===================================================");
 }
