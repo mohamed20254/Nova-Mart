@@ -30,7 +30,7 @@ class _PhoneNumperState extends State<PhoneNumper> {
         SizedBox(
           width: 316,
           //=============================Wrong
-          // متسخدمش الباكدج دي تاني لا تدعم ال فاليديشن
+          // متسخدمش الباكدج دي تاني لا تدعم ال فاليدشن
           //=====================================
           child: IntlPhoneField(
             initialValue: FirebaseAuth.instance.currentUser!.phoneNumber ?? "",

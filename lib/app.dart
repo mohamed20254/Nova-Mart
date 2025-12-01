@@ -7,7 +7,6 @@ import 'package:ecomerc_app_with_admin/features/wishlist/presentation/bloc/favor
 import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:ecomerc_app_with_admin/core/localization/localization_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widget_previews.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,22 +21,22 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ThemCubit()),
-        BlocProvider(create: (context) => LocalizationCubit()),
-        BlocProvider(create: (context) => sl<AuthCubit>()),
-        BlocProvider(create: (context) => sl<FavvoritCubit>()),
-        BlocProvider(create: (context) => sl<CartCubit>()),
+        BlocProvider(create: (final context) => ThemCubit()),
+        BlocProvider(create: (final context) => LocalizationCubit()),
+        BlocProvider(create: (final context) => sl<AuthCubit>()),
+        BlocProvider(create: (final context) => sl<FavvoritCubit>()),
+        BlocProvider(create: (final context) => sl<CartCubit>()),
       ],
       child: BlocBuilder<ThemCubit, ThemeMode>(
-        builder: (context, thememode) {
+        builder: (final context, final thememode) {
           return BlocBuilder<LocalizationCubit, String>(
-            builder: (context, lang) {
+            builder: (final context, final lang) {
               return ScreenUtilInit(
                 designSize: const Size(375, 812),
-                builder: (context, child) => MaterialApp(
+                builder: (final context, final child) => MaterialApp(
                   locale: Locale(lang),
                   localizationsDelegates:
                       AppLocalizations.localizationsDelegates,

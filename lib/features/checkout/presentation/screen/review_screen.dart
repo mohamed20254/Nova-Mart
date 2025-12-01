@@ -1,11 +1,23 @@
+import 'package:ecomerc_app_with_admin/core/constant/string.dart';
+import 'package:ecomerc_app_with_admin/core/routing/app_routing.dart';
+import 'package:ecomerc_app_with_admin/features/checkout/presentation/bloc/checkout_cubit/checkout_cubit.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/checkout_buttom.dart';
 import 'package:ecomerc_app_with_admin/features/orders/data/model/order_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ReviewScreen extends StatefulWidget {
-  const ReviewScreen({super.key, required this.orders});
+  const ReviewScreen({
+    super.key,
+    required this.orders,
+    required this.addressInfo,
+    required this.customerInfo,
+    required this.currentPayment,
+  });
   final List<OrderItem> orders;
-
+  final AddressInfo addressInfo;
+  final CustomerInfo customerInfo;
+  final String currentPayment;
   @override
   State<ReviewScreen> createState() => _ReviewScreenState();
 }
@@ -91,9 +103,10 @@ class _ReviewScreenState extends State<ReviewScreen> {
     );
   }
 
+  // ignore: prefer_final_parameters
   Container _buildTotalbox(BuildContext context, final bool isdark) {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       height: 315,
 
       decoration: BoxDecoration(
@@ -162,7 +175,38 @@ class _ReviewScreenState extends State<ReviewScreen> {
             ],
           ),
           const Spacer(),
-          CheckoutButtom(text: "Confrom order", ontap: () {}),
+          CheckoutButtom(
+            text: "Confrom order",
+            ontap: () {
+              final order = OrderModel(
+                orderId: "ORD--${DateTime.now().microsecondsSinceEpoch}",
+                userId: "",
+                status: "send success",
+                createdAt: DateTime.now(),
+                customer: widget.customerInfo,
+                address: widget.addressInfo,
+                payment: PaymentInfo(
+                  paymentMethod: "cash",
+                  paymentStatus: "Pending",
+                  transactionId: "",
+                  currency: "egp",
+                ),
+                items: widget.orders,
+                total: _totail(widget.orders),
+              );
+              if (widget.currentPayment.contains(AppStrings.cash)) {
+                context.read<CheckoutCubit>().sendOrder(order);
+                final cubit = context.read<CheckoutCubit>();
+                print(context.read<CheckoutCubit>().state);
+                Navigator.pushNamed(
+                  context,
+                  AppRouting.checkoutsucess,
+
+                  arguments: ChecoutArg(order: order, cubit: cubit),
+                );
+              }
+            },
+          ),
         ],
       ),
     );

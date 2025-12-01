@@ -6,4 +6,5 @@ class AppImages {
   static const String carousel2 = "$_key/paner-2-final.jpg";
   static const String carousel3 =
       "$_key/flat-design-fashion-stylist-sale-banner_23-2150007862.jpg";
+  static const String checotsucess = "$_key/checkout-sucess.png";
 }

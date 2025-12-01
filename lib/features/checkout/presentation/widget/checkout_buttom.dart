@@ -27,7 +27,7 @@ class CheckoutButtom extends StatelessWidget {
           ),
           onPressed: ontap,
           child: Text(
-            AppLocalizations.of(context)!.confirm,
+            text,
             style: Theme.of(
               context,
             ).textTheme.bodySmall!.copyWith(color: Colors.white),

@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:ecomerc_app_with_admin/core/di/injection_container.dart';
 import 'package:ecomerc_app_with_admin/core/local_storage/first_time.dart';
 import 'package:ecomerc_app_with_admin/features/Home/domain/entity/product_entity.dart';
@@ -15,6 +16,8 @@ import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/sign_up
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verfication_sucsess.dart';
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verification_email.dart';
 import 'package:ecomerc_app_with_admin/features/cart/presentation/screen/cart_screen.dart';
+import 'package:ecomerc_app_with_admin/features/checkout/presentation/bloc/checkout_cubit/checkout_cubit.dart';
+import 'package:ecomerc_app_with_admin/features/checkout/presentation/checkout_success_screen.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/screen/checkout_mian_screen.dart';
 import 'package:ecomerc_app_with_admin/features/onboarding/presentation/onbording_screen.dart';
 import 'package:ecomerc_app_with_admin/features/orders/data/model/order_model.dart';
@@ -43,6 +46,7 @@ class AppRouting {
   static const String editeprofile = "/editeprofileinformationscreen";
   static const String cartscreen = "CartScreen";
   static const String checkout = "maincheckout";
+  static const String checkoutsucess = "chekoutsucess";
 
   static Route<dynamic>? ongenerating(final RouteSettings setting) {
     switch (setting.name) {
@@ -164,11 +168,26 @@ class AppRouting {
           {
             final arg = setting.arguments as List<OrderItem>;
             return MaterialPageRoute(
-              builder: (final context) => CheckoutMianScreen(orders: arg),
+              builder: (final context) => BlocProvider(
+                create: (final context) => sl<CheckoutCubit>(),
+                child: CheckoutMianScreen(orders: arg),
+              ),
             );
           }
         }
+      case checkoutsucess:
+        {
+          final arg = setting.arguments as ChecoutArg;
+          final cubit = arg.cubit;
+          final OrderModel order = arg.order;
+          return MaterialPageRoute(
+            builder: (final context) => BlocProvider.value(
+              value: cubit,
 
+              child: CheckoutSuccessScreen(order: order),
+            ),
+          );
+        }
       default:
         return MaterialPageRoute(
           builder: (final context) => const DefaultScreen(),
@@ -184,4 +203,11 @@ class DefaultScreen extends StatelessWidget {
   Widget build(final BuildContext context) {
     return const Column(children: [Center(child: Text("NoRouting"))]);
   }
+}
+
+class ChecoutArg {
+  ChecoutArg({required this.order, required this.cubit});
+
+  final OrderModel order;
+  final CheckoutCubit cubit;
 }

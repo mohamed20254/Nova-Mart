@@ -16,6 +16,16 @@ class CheckoutMianScreen extends StatefulWidget {
 
 class _CheckoutMianScreenState extends State<CheckoutMianScreen> {
   ValueNotifier<int> cuurentpage = ValueNotifier(0);
+  AddressInfo addressInfo = AddressInfo(
+    city: "",
+    area: "",
+    addressLine1: "",
+    postalCode: 0,
+    lng: 0,
+  );
+  CustomerInfo customerInfo = CustomerInfo(name: "", phone: "");
+  String currentPayment = '';
+
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
@@ -27,12 +37,18 @@ class _CheckoutMianScreenState extends State<CheckoutMianScreen> {
           const SizedBox(height: 10),
           ValueListenableBuilder(
             valueListenable: cuurentpage,
-            builder: (context, value, child) {
+            builder: (final context, final value, final child) {
               if (value == 0) {
                 return Expanded(
                   child: ShippingScreen(
                     onnext: (final index) {
                       cuurentpage.value = index;
+                    },
+                    adressinfo: (final AddressInfo p1) {
+                      addressInfo = p1;
+                    },
+                    customerInfo: (final CustomerInfo p1) {
+                      customerInfo = p1;
                     },
                   ),
                 );
@@ -41,9 +57,19 @@ class _CheckoutMianScreenState extends State<CheckoutMianScreen> {
                   onnext: (final index) {
                     cuurentpage.value = index;
                   },
+                  oncurrentPayment: (final String childcurrentpayment) {
+                    currentPayment = childcurrentpayment;
+                  },
                 );
               } else if (value == 2) {
-                return Expanded(child: ReviewScreen(orders: widget.orders));
+                return Expanded(
+                  child: ReviewScreen(
+                    orders: widget.orders,
+                    customerInfo: customerInfo,
+                    currentPayment: currentPayment,
+                    addressInfo: addressInfo,
+                  ),
+                );
               }
               return const SizedBox();
             },
@@ -60,7 +86,7 @@ class _CheckoutMianScreenState extends State<CheckoutMianScreen> {
         width: 280,
         child: ValueListenableBuilder(
           valueListenable: cuurentpage,
-          builder: (context, value, child) {
+          builder: (final context, final value, final child) {
             return Row(
               children: [
                 //    Shiping screen

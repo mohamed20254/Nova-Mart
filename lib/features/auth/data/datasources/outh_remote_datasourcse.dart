@@ -10,7 +10,10 @@ abstract class OuthRemoteDatasourcse {
     required final String password,
     required final String phone,
   });
-  Future<UserModel> login({required String email, required String password});
+  Future<UserModel> login({
+    required final String email,
+    required final String password,
+  });
 
   Future<void> sendEmailVerification();
 
@@ -21,7 +24,7 @@ abstract class OuthRemoteDatasourcse {
   Stream<User?> listenToAuthState();
 
   Future<UserModel> googlesignin();
-  Future<void> resetPAssword(String email);
+  Future<void> resetPAssword(final String email);
   Future<UserModel> fatchUser();
   String get uid;
 }
@@ -38,10 +41,10 @@ class OuthRemoteDatasourcseImpl implements OuthRemoteDatasourcse {
   //---------------------------creat account
   @override
   Future<UserModel> creatAccount({
-    required String name,
-    required String email,
-    required String password,
-    required String phone,
+    required final String name,
+    required final String email,
+    required final String password,
+    required final String phone,
   }) async {
     final usercredential = await _auth.createUserWithEmailAndPassword(
       email: email,
@@ -85,8 +88,8 @@ class OuthRemoteDatasourcseImpl implements OuthRemoteDatasourcse {
   //---------------------------------login
   @override
   Future<UserModel> login({
-    required String email,
-    required String password,
+    required final String email,
+    required final String password,
   }) async {
     final UserCredential userCredential = await _auth
         .signInWithEmailAndPassword(email: email, password: password);
@@ -170,7 +173,7 @@ class OuthRemoteDatasourcseImpl implements OuthRemoteDatasourcse {
   }
 
   @override
-  Future<void> resetPAssword(String email) async {
+  Future<void> resetPAssword(final String email) async {
     await _auth.sendPasswordResetEmail(email: email);
   }
 

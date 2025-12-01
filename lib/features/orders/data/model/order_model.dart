@@ -53,6 +53,32 @@ class OrderModel {
       'total': total,
     };
   }
+
+  OrderModel copyWith({
+    final String? orderId,
+    final String? userId,
+    final String? status,
+    final DateTime? createdAt,
+    final String? notes,
+
+    final CustomerInfo? customer,
+    final AddressInfo? address,
+    final PaymentInfo? payment,
+    final List<OrderItem>? items,
+    final double? total,
+  }) {
+    return OrderModel(
+      orderId: orderId ?? this.orderId,
+      userId: userId ?? this.userId,
+      status: status ?? this.status,
+      createdAt: createdAt ?? this.createdAt,
+      customer: customer ?? this.customer,
+      address: address ?? this.address,
+      payment: payment ?? this.payment,
+      items: items ?? this.items,
+      total: total ?? this.total,
+    );
+  }
 }
 
 class CustomerInfo {
@@ -81,8 +107,10 @@ class AddressInfo {
       city: data['city'],
       area: data['area'],
       addressLine1: data['address_line_1'],
-      postalCode: (data['postalCode'] as num).toDouble(),
-      lng: (data['lng'] as num).toDouble(),
+      postalCode: data['postalCode'] != null
+          ? (data['postalCode'] as num).toDouble()
+          : 0.0,
+      lng: data['lng'] != null ? (data['lng'] as num).toDouble() : 0.0,
     );
   }
   final String city;
@@ -143,8 +171,10 @@ class OrderItem {
       productId: data['product_id'].toString(),
       productName: data['product_name'],
       quantity: data['quantity'],
-      price: (data['price'] as num).toDouble(),
-      finalPrice: (data['final_price'] as num).toDouble(),
+      price: data['price'] != null ? (data['price'] as num).toDouble() : 0.0,
+      finalPrice: data['final_price'] != null
+          ? (data['final_price'] as num).toDouble()
+          : 0.0,
       image: data["image"] ?? "",
     );
   }

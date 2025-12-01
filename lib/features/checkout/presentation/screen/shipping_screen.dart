@@ -3,12 +3,20 @@ import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/che
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/dropdown_texfiled.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/phone_numper.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/shipping_textfiled.dart';
+import 'package:ecomerc_app_with_admin/features/orders/data/model/order_model.dart';
 import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class ShippingScreen extends StatefulWidget {
-  const ShippingScreen({super.key, required this.onnext});
+  const ShippingScreen({
+    super.key,
+    required this.onnext,
+    required this.adressinfo,
+    required this.customerInfo,
+  });
   final Function(int) onnext;
+  final Function(AddressInfo) adressinfo;
+  final Function(CustomerInfo) customerInfo;
 
   @override
   State<ShippingScreen> createState() => _ShippingScreenState();
@@ -21,6 +29,8 @@ class _ShippingScreenState extends State<ShippingScreen> {
   late final TextEditingController posalcode;
   final GlobalKey<FormState> formsKey = GlobalKey<FormState>();
   final GlobalKey<FormState> keyfiled = GlobalKey<FormState>();
+  String city = "";
+  String governorate = "";
   @override
   void initState() {
     nameControler = TextEditingController();
@@ -57,8 +67,16 @@ class _ShippingScreenState extends State<ShippingScreen> {
             const SizedBox(height: 10),
             //slected province && City
             Dropdown(
-              onCity: (final city) {},
-              onGovernorate: (final governorate) {},
+              onCity: (final childcity) {
+                setState(() {
+                  city = childcity;
+                });
+              },
+              onGovernorate: (final childgovernorate) {
+                setState(() {
+                  governorate = childgovernorate;
+                });
+              },
             ),
             const SizedBox(height: 10),
             //==============street Adress
@@ -82,6 +100,21 @@ class _ShippingScreenState extends State<ShippingScreen> {
               ontap: () {
                 if (formsKey.currentState!.validate()) {
                   widget.onnext(1);
+                  widget.adressinfo(
+                    AddressInfo(
+                      city: city,
+                      area: governorate,
+                      addressLine1: streetcontroler.text,
+                      postalCode: double.tryParse(posalcode.text) ?? 0,
+                      lng: 0,
+                    ),
+                  );
+                  widget.customerInfo(
+                    CustomerInfo(
+                      name: nameControler.text,
+                      phone: nameControler.text,
+                    ),
+                  );
                 }
               },
             ),

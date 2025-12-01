@@ -5,8 +5,13 @@ import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key, required this.onnext});
+  const PaymentScreen({
+    super.key,
+    required this.onnext,
+    required this.oncurrentPayment,
+  });
   final Function(int) onnext;
+  final Function(String) oncurrentPayment;
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
 }
@@ -68,6 +73,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 CheckoutButtom(
                   text: AppLocalizations.of(context)!.confirm,
                   ontap: () {
+                    widget.oncurrentPayment(value);
                     widget.onnext(2);
                   },
                 ),
