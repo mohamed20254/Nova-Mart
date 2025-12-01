@@ -6,10 +6,14 @@ class ShippingTextFiled extends StatelessWidget {
     required this.text,
     required this.hint,
     this.prefix,
+    this.validator,
+    required this.controler,
   });
   final String text;
   final String hint;
   final Widget? prefix;
+  final String? Function(String?)? validator;
+  final TextEditingController controler;
   @override
   Widget build(final BuildContext context) {
     return Center(
@@ -24,33 +28,32 @@ class ShippingTextFiled extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFE7E3E3).withValues(alpha: 0.4),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 10),
-
             width: 316,
-            height: 40,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    style: Theme.of(context).textTheme.labelLarge,
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.all(0),
-                      hintText: hint,
-                      hintStyle: Theme.of(context).textTheme.labelMedium!
-                          .copyWith(fontWeight: FontWeight.w300),
 
-                      border: InputBorder.none,
-                    ),
-                  ),
+            child: TextFormField(
+              controller: controler,
+              validator: validator,
+
+              style: Theme.of(context).textTheme.labelLarge,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                fillColor: const Color(0xFFE7E3E3).withValues(alpha: 0.4),
+                filled: true,
+                errorStyle: Theme.of(context).textTheme.labelSmall!.copyWith(
+                  color: Colors.red,
+                  fontWeight: FontWeight.w500,
                 ),
-              ],
+
+                hintText: hint,
+                hintStyle: Theme.of(
+                  context,
+                ).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.w300),
+                isDense: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+              ),
             ),
           ),
         ],
