@@ -3,6 +3,7 @@ import 'package:ecomerc_app_with_admin/features/Home/di.dart';
 import 'package:ecomerc_app_with_admin/features/auth/auth_injection.dart';
 import 'package:ecomerc_app_with_admin/features/auth/domain/usecase/listen_auth_state_usecase.dart';
 import 'package:ecomerc_app_with_admin/features/cart/di.dart';
+import 'package:ecomerc_app_with_admin/features/checkout/di.dart';
 import 'package:ecomerc_app_with_admin/features/wishlist/di.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
@@ -22,4 +23,5 @@ Future<void> init() async {
   await injectFav(sl);
   await diPrudict(sl);
   await injectcart(sl);
+  await injectCheckOut(sl);
 }
