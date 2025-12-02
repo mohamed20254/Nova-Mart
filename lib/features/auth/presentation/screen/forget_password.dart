@@ -4,7 +4,6 @@ import 'package:ecomerc_app_with_admin/core/responsive/app_size.dart';
 import 'package:ecomerc_app_with_admin/core/routing/app_routing.dart';
 import 'package:ecomerc_app_with_admin/core/theme/widget/app_widget.dart';
 import 'package:ecomerc_app_with_admin/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
-import 'package:ecomerc_app_with_admin/features/auth/presentation/widget/custom_button_signup.dart';
 import 'package:ecomerc_app_with_admin/features/auth/presentation/widget/custom_textformfield.dart';
 import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';

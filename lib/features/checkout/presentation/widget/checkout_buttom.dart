@@ -1,4 +1,3 @@
-import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutButtom extends StatelessWidget {

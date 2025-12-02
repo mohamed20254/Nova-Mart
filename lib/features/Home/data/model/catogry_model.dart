@@ -1,17 +1,5 @@
-import 'dart:convert';
-
 class CatogryModel {
-  final String name;
-  final String image;
-  final String parentid;
-  final bool isFeatured;
-  const CatogryModel({
-    required this.name,
-    required this.image,
-    required this.parentid,
-    required this.isFeatured,
-  });
-  factory CatogryModel.formJason(Map<String, dynamic> json) {
+  factory CatogryModel.formJason(final Map<String, dynamic> json) {
     return CatogryModel(
       name: json["name"] ?? "",
       image: json["image"] ?? "",
@@ -19,6 +7,16 @@ class CatogryModel {
       isFeatured: json['Isfeatured'] ?? false,
     );
   }
+  const CatogryModel({
+    required this.name,
+    required this.image,
+    required this.parentid,
+    required this.isFeatured,
+  });
+  final String name;
+  final String image;
+  final String parentid;
+  final bool isFeatured;
 
   Map<String, dynamic> tojson() {
     return {

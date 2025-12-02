@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemCubit extends Cubit<ThemeMode> {
   ThemCubit() : super(ThemeMode.system) {
