@@ -22,6 +22,7 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await di.init();
+
   runApp(const MyApp());
   // FirebaseAuth.instance.userChanges().listen((event) => print(event!.email.toString()) );
   await FirebaseAuth.instance.setLanguageCode("en");

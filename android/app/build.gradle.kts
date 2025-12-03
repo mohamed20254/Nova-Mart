@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.example.ecomerc_app_with_admin"
-    compileSdk = 35
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -32,7 +32,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        multiDexEnabled true
+        multiDexEnabled = true
     }
 
     buildTypes {

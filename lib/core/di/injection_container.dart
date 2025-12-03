@@ -13,6 +13,7 @@ import '../helper/intial_screen.dart';
 
 final sl = GetIt.instance; //ervice locator
 Future<void> init() async {
+  //hive
   await Hive.initFlutter();
   sl.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
   sl.registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance);
@@ -20,8 +21,13 @@ Future<void> init() async {
   sl.registerLazySingleton<AuthStateChange>(
     () => AuthStateChange(listen: sl<ListenAuthStateUsecase>()),
   );
+  // injection favorite
   await injectFav(sl);
+
+  //injection product
   await diPrudict(sl);
+  //injection cart
   await injectcart(sl);
+  // injection checkout
   await injectCheckOut(sl);
 }
