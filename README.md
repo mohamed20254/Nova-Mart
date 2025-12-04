@@ -28,13 +28,16 @@ Add your screenshots inside:
   <td><img src="assets/images/908shots_so.png" alt="Product Details" width="200"/></td>
   <td><img src="assets/images/655shots_so.png" alt="Cart Screen" width="200"/></td>
   <td><img src="assets/images/233shots_so.png" alt="Checkout Screen" width="200"/></td>
+</tr>
+</table>
+<table>
+<tr>
   <td><img src="assets/images/307shots_so.png" alt="Checkout Screen" width="200"/></td>
   <td><img src="assets/images/364shots_so.png" alt="Checkout Screen" width="200"/></td>
   <td><img src="assets/images/771shots_so.png" alt="Checkout Screen" width="200"/></td>
   <td><img src="assets/images/593shots_so.png" alt="Checkout Screen" width="200"/></td>
 </tr>
 </table>
-
 ---
 
 ## 🚀 Features
