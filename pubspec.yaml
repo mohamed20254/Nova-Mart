@@ -39,7 +39,6 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_bloc: ^9.1.1
   bloc: ^9.0.1
-  shared_preferences: ^2.5.3
   flutter_native_splash: ^2.4.6
   lottie: ^3.3.2
   font_awesome_flutter: ^10.10.0
