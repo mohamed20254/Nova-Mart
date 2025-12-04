@@ -4,7 +4,7 @@ import 'package:ecomerc_app_with_admin/features/orders/data/repo_impl/order_repo
 import 'package:ecomerc_app_with_admin/features/orders/domain/repo/order_repo.dart';
 import 'package:ecomerc_app_with_admin/features/orders/domain/usecase/watch_orders_usecase.dart';
 import 'package:ecomerc_app_with_admin/features/orders/presentation/bloc/cubit/order_cubit.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:get_it/get_it.dart';
 
 Future<void> injectOrder(final GetIt sl) async {

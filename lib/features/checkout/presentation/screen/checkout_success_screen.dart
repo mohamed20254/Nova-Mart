@@ -1,4 +1,5 @@
 import 'package:ecomerc_app_with_admin/core/constant/app_images.dart';
+import 'package:ecomerc_app_with_admin/core/helper/local_notification_servic.dart';
 import 'package:ecomerc_app_with_admin/core/routing/app_routing.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/bloc/checkout_cubit/checkout_cubit.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/widget/checkout_buttom.dart';
@@ -15,7 +16,16 @@ class CheckoutSuccessScreen extends StatelessWidget {
     return Scaffold(
       body: PopScope(
         canPop: false,
-        child: BlocBuilder<CheckoutCubit, CheckoutState>(
+        child: BlocConsumer<CheckoutCubit, CheckoutState>(
+          listener: (final context, final state) {
+            if (state is Checkoutfinish) {
+              LocalNotificationService.showBasicNotification(
+                title: "sucess sned",
+                body: "The products have been successfully ordered",
+                id: 1,
+              );
+            }
+          },
           builder: (final context, final state) {
             if (state is Checkoutlodaing) {
               return const Center(child: CircularProgressIndicator());

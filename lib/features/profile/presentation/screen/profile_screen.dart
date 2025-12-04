@@ -1,23 +1,24 @@
 import 'package:ecomerc_app_with_admin/core/responsive/app_size.dart';
+import 'package:ecomerc_app_with_admin/core/routing/app_routing.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/widget/custom_section_profile.dart';
+import 'package:ecomerc_app_with_admin/features/profile/presentation/widget/header_account.dart';
+import 'package:ecomerc_app_with_admin/features/profile/presentation/widget/logout_bottom.dart';
 import 'package:ecomerc_app_with_admin/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import '../widget/header_account.dart';
-import '../widget/logout_bottom.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HeaderAccount(),
+            const HeaderAccount(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
@@ -25,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(height: AppSize.spacehight2(context)),
                   _buildAccounSettting(context),
                   _buildAppSetting(context),
-                  LogoutButton(),
+                  const LogoutButton(),
                 ],
               ),
             ),
@@ -35,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Column _buildAppSetting(BuildContext context) {
+  Column _buildAppSetting(final BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
         CustomSectionProfile(
           trailing: Switch(
             value: true,
-            onChanged: (value) {
+            onChanged: (final value) {
               //
             },
           ),
@@ -69,12 +70,12 @@ class ProfileScreen extends StatelessWidget {
         CustomSectionProfile(
           trailing: Switch(
             value: false,
-            onChanged: (value) {
+            onChanged: (final value) {
               //
             },
           ),
           onTap: () {
-            //!ontap====================================safeMode
+            //!ontap====================================SafeMode
           },
           icon: Iconsax.security_safe_copy,
           title: Text(AppLocalizations.of(context)!.safeMode),
@@ -83,13 +84,15 @@ class ProfileScreen extends StatelessWidget {
         CustomSectionProfile(
           trailing: Switch(
             value: false,
-            onChanged: (value) {
+            onChanged: (final value) {
               //
             },
           ),
+
           onTap: () {
             //!ontap====================================hdImageQuality
           },
+
           icon: Iconsax.image_copy,
           title: Text(AppLocalizations.of(context)!.hdImageQuality),
           subtitle: AppLocalizations.of(context)!.hdImageQualityDesc,
@@ -99,7 +102,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Column _buildAccounSettting(BuildContext context) {
+  Column _buildAccounSettting(final BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -127,6 +130,7 @@ class ProfileScreen extends StatelessWidget {
         CustomSectionProfile(
           onTap: () {
             //!ontap====================================orders
+            Navigator.pushNamed(context, AppRouting.orderscreen);
           },
           icon: Iconsax.bag_cross_1_copy,
           title: Text(AppLocalizations.of(context)!.myOrders),

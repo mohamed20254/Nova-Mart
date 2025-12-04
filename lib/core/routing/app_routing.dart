@@ -16,10 +16,12 @@ import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verfica
 import 'package:ecomerc_app_with_admin/features/auth/presentation/screen/verification_email.dart';
 import 'package:ecomerc_app_with_admin/features/cart/presentation/screen/cart_screen.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/bloc/checkout_cubit/checkout_cubit.dart';
-import 'package:ecomerc_app_with_admin/features/checkout/presentation/checkout_success_screen.dart';
+import 'package:ecomerc_app_with_admin/features/checkout/presentation/screen/checkout_success_screen.dart';
 import 'package:ecomerc_app_with_admin/features/checkout/presentation/screen/checkout_mian_screen.dart';
 import 'package:ecomerc_app_with_admin/features/onboarding/presentation/onbording_screen.dart';
 import 'package:ecomerc_app_with_admin/features/orders/data/model/order_model.dart';
+import 'package:ecomerc_app_with_admin/features/orders/presentation/bloc/cubit/order_cubit.dart';
+import 'package:ecomerc_app_with_admin/features/orders/presentation/screen/order_screen.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/edite_profile_information_screen.dart';
 import 'package:ecomerc_app_with_admin/features/profile/presentation/screen/profile_screen.dart';
 import 'package:ecomerc_app_with_admin/features/store/presentation/screen/store_screen.dart';
@@ -46,6 +48,7 @@ class AppRouting {
   static const String cartscreen = "CartScreen";
   static const String checkout = "maincheckout";
   static const String checkoutsucess = "chekoutsucess";
+  static const String orderscreen = "orderscreen";
 
   static Route<dynamic>? ongenerating(final RouteSettings setting) {
     switch (setting.name) {
@@ -184,6 +187,15 @@ class AppRouting {
               value: cubit,
 
               child: CheckoutSuccessScreen(order: order),
+            ),
+          );
+        }
+      case orderscreen:
+        {
+          return MaterialPageRoute(
+            builder: (final context) => BlocProvider(
+              create: (final context) => sl<OrderCubit>(),
+              child: const OrderScreen(),
             ),
           );
         }
