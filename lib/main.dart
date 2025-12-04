@@ -1,5 +1,6 @@
 import 'package:ecomerc_app_with_admin/app.dart';
 import 'package:ecomerc_app_with_admin/core/di/injection_container.dart' as di;
+import 'package:ecomerc_app_with_admin/core/helper/local_notification_servic.dart';
 import 'package:ecomerc_app_with_admin/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,15 +14,17 @@ void main() async {
 
   //* init localStorage
   await GetStorage.init();
+  // notification init
+  await LocalNotificationService.init();
   //*  initialize Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   //* initialize
   await ScreenUtil.ensureScreenSize();
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await di.init();
+
   runApp(const MyApp());
   // FirebaseAuth.instance.userChanges().listen((event) => print(event!.email.toString()) );
   await FirebaseAuth.instance.setLanguageCode("en");
-
   // print("$user ===================================================");
 }

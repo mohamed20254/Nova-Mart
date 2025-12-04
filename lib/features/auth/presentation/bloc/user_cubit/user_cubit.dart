@@ -14,10 +14,13 @@ class UserCubit extends Cubit<UserState> {
   Future<void> getUser() async {
     emit(Userlodingstate());
     final res = await getUserUsecase.call();
-    res.fold(
-      (failure) => emit(UserFailureState(messige: failure.messige)),
-      (user) => emit(UsersuccessState(userEntity: user)),
-    );
+    res.fold((failure) => emit(UserFailureState(messige: failure.messige)), (
+      user,
+    ) {
+      if (!isClosed) {
+        emit(UsersuccessState(userEntity: user));
+      }
+    });
   }
 
   Future<void> ubdateUser({final String? name, final String? phone}) async {

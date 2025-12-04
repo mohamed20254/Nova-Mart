@@ -4,27 +4,27 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 abstract class PrudicLocalDataSources {
   List<CatogryModel>? getCategoryLocal();
-  Future<void> updateCategory(List<CatogryModel> categors);
+  Future<void> updateCategory(final List<CatogryModel> categors);
   String? lastUpdate();
   Future<void> changeUpdate(final String lastUbdate);
 }
 
 class PrudicLocalDataSourcesIpml implements PrudicLocalDataSources {
-  final Box _box;
   const PrudicLocalDataSourcesIpml(final Box box) : _box = box;
+  final Box _box;
   @override
   List<CatogryModel>? getCategoryLocal() {
     final List data = _box.get(AppStrings.category);
-    List<CatogryModel>? categors = data
-        .map((e) => CatogryModel.formJason(Map<String, dynamic>.from(e)))
+    final List<CatogryModel> categors = data
+        .map((final e) => CatogryModel.formJason(Map<String, dynamic>.from(e)))
         .toList();
     return categors;
   }
 
   //====================================Update Category
   @override
-  Future<void> updateCategory(List<CatogryModel> categors) async {
-    final newList = categors.map((e) => e.tojson()).toList();
+  Future<void> updateCategory(final List<CatogryModel> categors) async {
+    final newList = categors.map((final e) => e.tojson()).toList();
     await _box.put(AppStrings.category, newList);
   }
 
@@ -36,7 +36,7 @@ class PrudicLocalDataSourcesIpml implements PrudicLocalDataSources {
 
   //=================================Chang Update
   @override
-  Future<void> changeUpdate(String lastUbdate) async {
+  Future<void> changeUpdate(final String lastUbdate) async {
     _box.put("lastupdate", lastUbdate);
   }
 }

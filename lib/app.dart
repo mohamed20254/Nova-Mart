@@ -21,22 +21,22 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ThemCubit()),
-        BlocProvider(create: (context) => LocalizationCubit()),
-        BlocProvider(create: (context) => sl<AuthCubit>()),
-        BlocProvider(create: (context) => sl<FavvoritCubit>()),
-        BlocProvider(create: (context) => sl<CartCubit>()),
+        BlocProvider(create: (final context) => ThemCubit()),
+        BlocProvider(create: (final context) => LocalizationCubit()),
+        BlocProvider(create: (final context) => sl<AuthCubit>()),
+        BlocProvider(create: (final context) => sl<FavvoritCubit>()),
+        BlocProvider(create: (final context) => sl<CartCubit>()),
       ],
       child: BlocBuilder<ThemCubit, ThemeMode>(
-        builder: (context, thememode) {
+        builder: (final context, final thememode) {
           return BlocBuilder<LocalizationCubit, String>(
-            builder: (context, lang) {
+            builder: (final context, final lang) {
               return ScreenUtilInit(
                 designSize: const Size(375, 812),
-                builder: (context, child) => MaterialApp(
+                builder: (final context, final child) => MaterialApp(
                   locale: Locale(lang),
                   localizationsDelegates:
                       AppLocalizations.localizationsDelegates,
@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
                   onGenerateRoute: AppRouting.ongenerating,
                   debugShowCheckedModeBanner: false,
                   themeMode: thememode,
+
                   theme: AppTheme.lightTheme,
                   darkTheme: AppTheme.darkTheme,
                   title: "Ecommerc_App",

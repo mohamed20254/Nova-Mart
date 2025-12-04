@@ -1,31 +1,31 @@
 import 'package:ecomerc_app_with_admin/core/routing/app_routing.dart';
+import 'package:ecomerc_app_with_admin/core/theme/app_theme.dart';
 import 'package:ecomerc_app_with_admin/features/cart/domain/entity/cart_entity.dart';
 import 'package:ecomerc_app_with_admin/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:ecomerc_app_with_admin/features/orders/data/model/order_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 
-import '../../../../core/theme/app_theme.dart';
-
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BlocBuilder<CartCubit, CartState>(
-        builder: (context, state) {
+        builder: (final context, final state) {
           if (state is CartFailure) {
-            return SizedBox();
+            return const SizedBox();
           }
           if (state is CartLoaded) {
             double total = 0;
-            state.data.forEach((element) {
+            for (var element in state.data) {
               total += element.totalPrice;
-            });
-            return Container(
-              decoration: BoxDecoration(),
+            }
+            return DecoratedBox(
+              decoration: const BoxDecoration(),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
@@ -38,12 +38,32 @@ class CartScreen extends StatelessWidget {
                       total.toString(),
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        final List<OrderItem> orders = state.data
+                            .map(
+                              (final e) => OrderItem(
+                                productId: e.product.id.toString(),
+                                productName: e.product.title,
+                                quantity: e.quantity,
+                                price: e.product.price,
+                                finalPrice: e.totalPrice,
+                                image: e.product.images.isNotEmpty
+                                    ? e.product.images.first
+                                    : '',
+                              ),
+                            )
+                            .toList();
+                        Navigator.pushNamed(
+                          context,
+                          AppRouting.checkout,
+                          arguments: orders,
+                        );
+                      },
                       child: Text(
                         "checkout",
                         style: Theme.of(context).textTheme.labelLarge!.copyWith(
@@ -57,35 +77,38 @@ class CartScreen extends StatelessWidget {
               ),
             );
           }
-          return SizedBox();
+          return const SizedBox();
         },
       ),
       appBar: AppBar(
         title: Text("Cart", style: Theme.of(context).textTheme.bodyLarge),
       ),
       body: BlocBuilder<CartCubit, CartState>(
-        builder: (context, state) {
+        builder: (final context, final state) {
           if (state is CartLoding) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (state is CartFailure) {
             return Center(child: Text(state.message));
           }
           if (state is CartLoaded) {
             return ListView.builder(
               itemCount: state.data.length,
-              itemBuilder: (context, index) {
+              itemBuilder: (final context, final index) {
                 return Dismissible(
                   key: Key(state.data[index].product.title),
                   direction: DismissDirection.startToEnd,
-                  onDismissed: (direction) {
+                  onDismissed: (final direction) {
                     context.read<CartCubit>().removeItem(
                       id: state.data[index].product.id,
                     );
                   },
                   background: Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(color: Colors.red),
-                    child: Icon(Icons.delete_rounded, color: Colors.white),
+                    margin: const EdgeInsets.all(8.0),
+                    decoration: const BoxDecoration(color: Colors.red),
+                    child: const Icon(
+                      Icons.delete_rounded,
+                      color: Colors.white,
+                    ),
                   ),
 
                   child: InkWell(
@@ -105,12 +128,12 @@ class CartScreen extends StatelessWidget {
                               state.data[index].product.images[0],
                               height: 80,
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   Text(
                                     state.data[index].product.title,
                                     style: Theme.of(
@@ -123,7 +146,7 @@ class CartScreen extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 8),
+                              margin: const EdgeInsets.only(left: 8),
                               child: Row(
                                 children: [
                                   _buildAddandminus(
@@ -181,9 +204,9 @@ class CartScreen extends StatelessWidget {
   }
 
   InkWell _buildAddandminus(
-    BuildContext context, {
-    required void Function() ontap,
-    required IconData icon,
+    final BuildContext context, {
+    required final void Function() ontap,
+    required final IconData icon,
   }) {
     return InkWell(
       onTap: ontap,
@@ -194,7 +217,7 @@ class CartScreen extends StatelessWidget {
 
         decoration: BoxDecoration(
           color: AppTheme.isdark(context) ? Colors.black : Colors.white,
-          border: Border.all(color: Theme.of(context).primaryColor, width: 1),
+          border: Border.all(color: Theme.of(context).primaryColor),
           shape: BoxShape.circle,
         ),
         child: Icon(icon, size: 20.w),
@@ -210,29 +233,24 @@ class CartScreen extends StatelessWidget {
   }) {
     final box = Hive.box("cart");
 
-    // هات العناصر وتحويلها لـ CartItem
     final items = box.values
-        .map((e) => CartItem.fromJson(Map<String, dynamic>.from(e)))
+        .map((final e) => CartItem.fromJson(Map<String, dynamic>.from(e)))
         .toList();
 
-    // دور على العنصر
     final indexoddata = items.indexWhere(
-      (element) => element.product.id == state.data[index].product.id,
+      (final element) => element.product.id == state.data[index].product.id,
     );
 
     if (indexoddata == -1) return;
 
     final currentItem = items[indexoddata];
 
-    // زوّد الكمية بشكل صحيح
     final updatedItem = currentItem.ubdatequantity(
       currentItem.quantity + amount,
     );
 
-    // خزّن القيمة
     box.putAt(indexoddata, updatedItem.toJson());
 
-    // جدد الكارت
     context.read<CartCubit>().getcart();
   }
 }

@@ -27,17 +27,25 @@ class CustomFlexible extends StatelessWidget {
             SizedBox(height: AppSize.spacehight2(context)),
             Row(
               children: [
-                Expanded(child: FeaturedCard()),
+                Expanded(
+                  child: FeaturedCard(brand: "Nike", counts: "3350"),
+                ),
                 SizedBox(width: AppSize.spacewWidth2(context)),
-                Expanded(child: FeaturedCard()),
+                Expanded(
+                  child: FeaturedCard(brand: "Adidas", counts: "840"),
+                ),
               ],
             ),
             SizedBox(height: AppSize.spacehight2(context)),
             Row(
               children: [
-                Expanded(child: FeaturedCard()),
+                Expanded(
+                  child: FeaturedCard(brand: "Apple", counts: "1244"),
+                ),
                 SizedBox(width: AppSize.spacewWidth2(context)),
-                Expanded(child: FeaturedCard()),
+                Expanded(
+                  child: FeaturedCard(brand: "Samsung", counts: "3854"),
+                ),
               ],
             ),
           ],

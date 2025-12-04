@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-
-import '../../../../core/constant/app_images.dart';
 import '../../../../core/responsive/app_size.dart';
 import '../../../../l10n/app_localizations.dart';
 
@@ -18,7 +16,7 @@ class HeaderAccount extends StatelessWidget {
     return ClipPath(
       clipper: CustomClipperProfile(),
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: AppSize.hight(context) * 0.23,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -67,13 +65,13 @@ class HeaderAccount extends StatelessWidget {
                       );
                     },
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
                     onPressed: () {
                       //!======================================================edite profile
                       Navigator.pushNamed(context, AppRouting.editeprofile);
                     },
-                    icon: Icon(Iconsax.edit, color: Colors.white),
+                    icon: const Icon(Iconsax.edit, color: Colors.white),
                   ),
                 ],
               ),

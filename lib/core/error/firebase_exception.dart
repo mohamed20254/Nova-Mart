@@ -1,8 +1,7 @@
 class MyFirebaseServiceException implements Exception {
+  const MyFirebaseServiceException(this.code, {this.plugin});
   final String code;
   final String? plugin;
-
-  MyFirebaseServiceException(this.code, {this.plugin});
 
   String get message {
     switch (code) {
